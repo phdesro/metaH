@@ -1,0 +1,30 @@
+{
+    "files.associations": {
+        "istream": "cpp",
+        "iostream": "cpp",
+        "fstream": "cpp",
+        "*.tcc": "cpp",
+        "iosfwd": "cpp",
+        "string": "cpp",
+        "dataset.h": "c",
+        "cctype": "c",
+        "clocale": "c",
+        "cstdint": "c",
+        "cstdio": "c",
+        "cstdlib": "c",
+        "cwchar": "c",
+        "cwctype": "c",
+        "exception": "c",
+        "initializer_list": "c",
+        "limits": "c",
+        "new": "c",
+        "ostream": "c",
+        "stdexcept": "c",
+        "streambuf": "c",
+        "system_error": "c",
+        "type_traits": "c",
+        "typeinfo": "c",
+        "operation.h": "c",
+        "job.h": "c"
+    }
+}

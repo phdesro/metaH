@@ -1,30 +1,30 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include "./headers/DataSet.h"
 using namespace std;
 
-int main() {
-	ifstream dataSet ("");
+DataSet readFirstLine(istream& cinFirstLine, ifstream& data);
+void generateJobs(istream& cinJobs, DataSet& data);
+
+int main(int argc, char** argv) {
+	ifstream dataSet(argv[1]);
 	if (dataSet.is_open())
-		{
-			JobShop jobShop = readFirstLine(getLine(dataSet));
-			id=1;
-			while(getLine(dataSet, line)) {
-				new Job(line[1], id);
-				generateJob(line, id);
-				i++;			
-			}
-		}
-}
-
-*JobShop readFirstLine() {
-	
-}
-
-void generateJob(string line) {
-	
-	for(int i=0; i<; i++) 
-	{
-		
+	{	
+		cin.rdbuf(dataSet.rdbuf());
+		DataSet mainDataSet = readFirstLine(cin, dataSet);
+		generateJobs(cin, mainDataSet);
 	}
+	while(1);
+	return 0;
 }
+
+DataSet readFirstLine(istream& cinFirstLine, ifstream& data) {
+	string nbJobs, nbMachines, nextNumber, firstLineString;
+	cinFirstLine >> nbJobs >> nbMachines;
+	getline(data, firstLineString);
+	DataSet constructedDataSet(stoi(nbJobs, nullptr, 10), stoi(nbMachines, nullptr, 10));
+	return constructedDataSet;
+}
+
+void generateJobs(istream& cinJobs, DataSet& data) {}
