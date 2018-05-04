@@ -8,7 +8,7 @@
             "type": "shell",
             "command": "g++",
             "args": [
-                "-g", "main.cpp", "headers/DataSet.h", "headers/Job.h", "sources/Job.c" , "sources/DataSet.c", "-o", "main.exe"
+                "-g", "main.cpp", "headers/DataSet.h", "headers/Job.h", "headers/Operation.h", "sources/Operation.c", "sources/Job.c" , "sources/DataSet.c", "-o", "main.exe"
             ],
             "group": {
                 "kind": "build",

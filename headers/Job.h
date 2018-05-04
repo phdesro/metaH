@@ -9,6 +9,8 @@ class Job {
   public:
     Job (int nbOp);
     int getNbOperations();
+    void addOp(Operation opToAdd);
+    void addMachineToOp(int indexOp, int machineNb, int execTime);
 };
 
 #endif

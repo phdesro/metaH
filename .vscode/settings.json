@@ -25,6 +25,7 @@
         "type_traits": "c",
         "typeinfo": "c",
         "operation.h": "c",
-        "job.h": "c"
+        "job.h": "c",
+        "utility": "c"
     }
 }
