@@ -11,7 +11,7 @@ DataSet readFirstLine(istream& cinFirstLine, ifstream& data);
 void generateJobs(istream& cinJobs, DataSet& data);
 int generateSolution(DataSet& data, vector<Operation*> &operationOrder);
 
-const int MAX_TRIES = 2000;
+const int MAX_TRIES = 500;
 const int RANDOM_SEED = 79;
 
 int main(int argc, char** argv) {

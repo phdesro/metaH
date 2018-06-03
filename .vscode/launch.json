@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/main.exe",
-            "args": ["${workspaceFolder}/Monaldo\\Fjsp\\Job_Data\\Barnes\\Text\\mt10c1.fjs"],
+            "args": ["${workspaceFolder}/Monaldo\\Fjsp\\Job_Data\\Brandimarte_Data\\Text\\Mk01.fjs"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
