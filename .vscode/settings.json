@@ -28,6 +28,8 @@
         "job.h": "c",
         "utility": "c",
         "string_view": "c",
-        "ctime": "c"
+        "ctime": "c",
+        "deque": "cpp",
+        "vector": "cpp"
     }
 }

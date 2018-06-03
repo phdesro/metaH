@@ -55,7 +55,7 @@ int main(int argc, char** argv) {
 
 		for( int i = 0; i < opsToSkip.size(); i++ ) {
 			opsToSkip[i]->incrementSkipNb();
-			solutionFile << "  " << skipNbs[i] << "  ";
+			solutionFile << "  " << skipNbs[i]+1 << "  ";
 		}
 
 		solutionFile << "\n";
@@ -76,20 +76,37 @@ int main(int argc, char** argv) {
 	solutionFile << "Solution Finale: " << bestSolutionTime << "\n";
 	solutionFile << "Ops skipped: ";
 	for ( int i = 0; i < skipNbs.size(); i++ ) {
-			solutionFile << "  " << skipNbs[i] << "  ";
+			solutionFile << "  " << skipNbs[i]+1 << "  ";
 		}
 	solutionFile << "\n\n";
+
 	ofstream graphFile;
-	
   	graphFile.open ("graphFile.txt");
+	ofstream vectorFile;
+  	vectorFile.open ("vectorFile.txt");
+	string machineOrder = "MA = (";
+	string jobOrder = "OS = (";
+
 	for (int i = 0; i < (int)currentOperationOrder.size(); i++) {
+		int jobNb = currentOperationOrder[i]->getJobNbr() + 1;
+		jobOrder += to_string(jobNb) + ", ";
 		std::pair< int, int> chosenPair = currentOperationOrder[i]->getChosenPair();
-		graphFile << i + 1 << " " << chosenPair.first + 1 << "\n";
+		int machineNb = chosenPair.first + 1;
+		machineOrder += to_string(machineNb) + ", ";
+		graphFile << i + 1 << " " << machineNb << "\n";
 		solutionFile << "Op nb " << i + 1 << "   machine: " <<
-			chosenPair.first + 1 << "   time: " << chosenPair.second << "\n";
+			machineNb << "   JobNb: " << jobNb << 
+			"   time: " << chosenPair.second << "\n";
 	}
+
+	machineOrder = machineOrder.substr(0, machineOrder.length()-2) + ")";
+	jobOrder = jobOrder.substr(0, jobOrder.length()-2) + ")";
+	vectorFile << machineOrder << "\n";
+	vectorFile << jobOrder;
+
   	graphFile.close();
 	solutionFile.close();
+	vectorFile.close();
 	return 0;
 }
 
@@ -103,9 +120,8 @@ DataSet readFirstLine(istream& cinFirstLine, ifstream& data) {
 
 int generateSolution(DataSet& data, vector<Operation*> &operationOrder) {
 	int nbOpToOrder = data.calculateTotalNbOp();
-	//cout << "Nb Total Ops:  " << nbOpToOrder << "\n";
-	//cout << "Nb Total Machine:  " << data.getNbMachines() << "\n";
 	vector<int> machineTime;
+
 	for (int i=0; i < data.getNbMachines(); i++) {
 		machineTime.push_back(0);
 	}
@@ -113,8 +129,6 @@ int generateSolution(DataSet& data, vector<Operation*> &operationOrder) {
 	while ((int)operationOrder.size() != nbOpToOrder) {
 		operationOrder.push_back(data.getNextOp(machineTime));
 		std::pair< int, int> chosenPair = operationOrder.back()->getChosenPair();
-		/*cout << "Op nb " << (int)operationOrder.size() << "   machine: " <<
-			chosenPair.first << "   time: " << chosenPair.second << "\n";*/
 	}
 	int slowestMachineTime = 0;
 	int slowestMachineNumber = -1;
@@ -124,8 +138,6 @@ int generateSolution(DataSet& data, vector<Operation*> &operationOrder) {
 			slowestMachineNumber = i;
 		}
 	}
-	/*cout << "La machine la plus lente: " << slowestMachineNumber 
-		 << " prend " << slowestMachineTime << " unites de temps";*/
 
 	return slowestMachineTime;
 }
