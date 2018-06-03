@@ -26,6 +26,8 @@
         "typeinfo": "c",
         "operation.h": "c",
         "job.h": "c",
-        "utility": "c"
+        "utility": "c",
+        "string_view": "c",
+        "ctime": "c"
     }
 }
